@@ -1,0 +1,17 @@
+high_gain_photos = dir('High Gain Photos');
+low_gain_photos = dir('Low Gain Photos');
+high_gain_pixel_vals = zeros(numel(high_gain_photos));
+low_gain_pixel_vals = zeros(numel(low_gain_photos));
+
+for i = 1:numel(high_gain_photos)
+    filename = getfield(high_gain_photos, {i}, 'name');
+    image = imread(filename);
+    high_gain_pixel_vals(i) = image(500,1000);
+end
+
+for i = 1:numel(low_gain_photos)
+    filename = getfield(low_gain_photos, {i}, 'name');
+    image = imread(filename);
+    low_gain_pixel_vals(i) = image(500,1000);
+end
+    
