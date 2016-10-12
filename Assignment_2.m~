@@ -14,7 +14,7 @@ end
 for i = 3:numel(low_gain_photos) 
     filename = getfield(low_gain_photos, {i}, 'name'); 
     image2 = imread(filename); 
-    low_gain_pixel_vals(i-2) = image2(250,700); 
+    low_gain_pixel_vals(i-2) = image2(250,2000); 
 end
 
 figure('Name','High Gain Pixel Values','NumberTitle','off')
