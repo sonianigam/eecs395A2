@@ -14,7 +14,7 @@ end
 for i = 3:numel(low_gain_photos) 
     filename = getfield(low_gain_photos, {i}, 'name'); 
     image2 = imread(filename); 
-    low_gain_pixel_vals(i-2) = image2(250,2000); 
+    low_gain_pixel_vals(i-2) = image2(250,700); 
 end
 
 figure('Name','High Gain Pixel Values','NumberTitle','off')
@@ -158,7 +158,24 @@ hist(low_gain_pixel_vals)
 % plot(x1, y1);
 % hold off
 
-%6. 
+%7. 
+
+stdev_high = sqrt(variance_mean_high);
+stdev_low = sqrt(variance_mean_low);
+
+SNR_high = zeros(length(stdev_high));
+SNR_low = zeros(length(stdev_low));
+
+for i = 1:length(stdev_high)
+    SNR_high(i) = means_unique_high(i)/stdev_high(i);
+    SNR_low(i) = means_unique_low(i)/stdev_low(i);
+end
 
 
-    
+figure('Name','SNR vs Mean High Gain','NumberTitle','off');
+plot(means_unique_high,SNR_high);
+
+figure('Name','SNR vs Mean Low Gain','NumberTitle','off');
+plot(means_unique_low,SNR_low);
+
+
